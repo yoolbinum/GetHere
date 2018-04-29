@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashSet;
+
 @Controller
 @RequestMapping("/owner")
 public class OwnerController {
@@ -33,6 +35,14 @@ public class OwnerController {
         AppUser user = userService.findByUsername(auth.getName());
         model.addAttribute("user", user);
         model.addAttribute("employees", userService.findEmployees());
+        return modelDir + "payment/send";
+    }
+
+    @RequestMapping("/sent")
+    public String sendNone(Model model, Authentication auth){
+        AppUser user = userService.findByUsername(auth.getName());
+        model.addAttribute("user", user);
+        model.addAttribute("employees", new HashSet());
         return modelDir + "payment/send";
     }
 

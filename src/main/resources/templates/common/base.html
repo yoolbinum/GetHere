@@ -75,9 +75,9 @@
                         class="nav-label">Schedule</span></a>
             </li>
             <li sec:authorize="hasAnyAuthority('OWNER')">
-                <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Payment</span><span
-                        class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
+                <a><i class="fa fa-shopping-cart"></i> <span class="nav-label">Payment</span>
+                    <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
                     <li><a th:href="@{/owner/send}">Send</a></li>
                     <li><a th:href="@{/owner/history}">History</a></li>
                     <li><a th:href="@{/owner/debit}">Debit Card</a></li>
