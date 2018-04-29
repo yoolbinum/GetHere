@@ -28,6 +28,14 @@ public class OwnerController {
         return modelDir + "calendar/edit";
     }
 
+    @RequestMapping("/send")
+    public String send(Model model, Authentication auth){
+        AppUser user = userService.findByUsername(auth.getName());
+        model.addAttribute("user", user);
+        model.addAttribute("employees", userService.findEmployees());
+        return modelDir + "payment/send";
+    }
+
     @RequestMapping("/history")
     public String history(Model model, Authentication auth){
         AppUser user = userService.findByUsername(auth.getName());

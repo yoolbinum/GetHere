@@ -20,13 +20,11 @@
                         <div class="ibox-title">
                             <h5>History</h5>
                         </div>
-                        <div class="row">
-                            <a class="btn btn-info " type="button" th:href="@{/spending/create}"><i class="fa fa-paste"></i>New Spending</a>
-                        </div>
                         <div class="ibox-content">
                             <table class="table">
                                 <thead>
                                 <tr>
+                                    <th>Transaction Identifier</th>
                                     <th>Date</th>
                                     <th>Amount</th>
                                     <th>Reciever</th>
@@ -34,6 +32,7 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="transfer : ${transfers}">
+                                    <td th:text="${transfer.transactionIdentifier}"></td>
                                     <td th:text="${transfer.date}"></td>
                                     <td th:text="${transfer.amount}"></td>
                                     <td th:text="${transfer.reciever}"></td>

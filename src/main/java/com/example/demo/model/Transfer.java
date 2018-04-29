@@ -19,6 +19,8 @@ public class Transfer {
 
     private BigDecimal amount;
 
+    private String transactionIdentifier;
+
     public long getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class Transfer {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public String getTransactionIdentifier() {
+        return transactionIdentifier;
+    }
+
+    public void setTransactionIdentifier(String transactionIdentifier) {
+        this.transactionIdentifier = transactionIdentifier;
     }
 }

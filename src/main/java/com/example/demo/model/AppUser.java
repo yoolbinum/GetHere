@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,12 @@ public class AppUser {
     private String email;
 
     private String phone;
+
+    private int numHours;
+
+    private BigDecimal hourlyWage;
+
+    private BigDecimal totalWage;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
@@ -87,5 +94,29 @@ public class AppUser {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public int getNumHours() {
+        return numHours;
+    }
+
+    public void setNumHours(int numHours) {
+        this.numHours = numHours;
+    }
+
+    public BigDecimal getHourlyWage() {
+        return hourlyWage;
+    }
+
+    public void setHourlyWage(BigDecimal hourlyWage) {
+        this.hourlyWage = hourlyWage;
+    }
+
+    public BigDecimal getTotalWage() {
+        return totalWage;
+    }
+
+    public void setTotalWage(BigDecimal totalWage) {
+        this.totalWage = totalWage;
     }
 }

@@ -48,6 +48,9 @@ public class DataLoader implements CommandLineRunner {
         employee.setPassword("rob");
         employee.setUsername("rob");
         employee.addRole(employeeRole);
+        employee.setNumHours(10);
+        employee.setHourlyWage(new BigDecimal(8.50));
+        employee.setTotalWage(new BigDecimal(80.50));
         userService.saveNewEmployee(employee);
 
         AppUser employee2 = new AppUser();
@@ -55,6 +58,9 @@ public class DataLoader implements CommandLineRunner {
         employee2.setPassword("hello");
         employee2.setUsername("hello");
         employee2.addRole(employeeRole);
+        employee2.setNumHours(10);
+        employee2.setHourlyWage(new BigDecimal(8.50));
+        employee2.setTotalWage(new BigDecimal(80.50));
         userService.saveNewEmployee(employee2);
 
         AppUser employee3 = new AppUser();
@@ -62,6 +68,9 @@ public class DataLoader implements CommandLineRunner {
         employee3.setPassword("jon");
         employee3.setUsername("jon");
         employee3.addRole(employeeRole);
+        employee3.setNumHours(10);
+        employee3.setHourlyWage(new BigDecimal(8.50));
+        employee3.setTotalWage(new BigDecimal(80.50));
         userService.saveNewEmployee(employee3);
 
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
@@ -69,21 +78,24 @@ public class DataLoader implements CommandLineRunner {
         String strDate = sdfDate.format(now);
 
         Transfer transfer = new Transfer();
-        transfer.setAmount(new BigDecimal(300));
+        transfer.setAmount(new BigDecimal(80.5));
         transfer.setDate(strDate);
         transfer.setReciever("Jon Snow");
+        transfer.setTransactionIdentifier("381228649430011");
         transferService.saveTransfer(transfer);
 
         Transfer transfer2 = new Transfer();
-        transfer2.setAmount(new BigDecimal(100));
+        transfer2.setAmount(new BigDecimal(80.5));
         transfer2.setDate(strDate);
         transfer2.setReciever("Hello World");
+        transfer2.setTransactionIdentifier("466491086113330");
         transferService.saveTransfer(transfer2);
 
         Transfer transfer3 = new Transfer();
-        transfer3.setAmount(new BigDecimal(150));
+        transfer3.setAmount(new BigDecimal(80.5));
         transfer3.setDate(strDate);
         transfer3.setReciever("Rob Stark");
+        transfer3.setTransactionIdentifier("101685605152686");
         transferService.saveTransfer(transfer3);
     }
 }
