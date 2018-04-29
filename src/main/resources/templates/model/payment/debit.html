@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="common/base :: head"></head>
+
+<body>
+<div id="wrapper">
+
+    <nav th:replace="common/base :: topNavbar"></nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div th:replace="common/base :: navBar"></div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="payment-card">
+                                <i class="fa fa-cc-visa payment-icon-big text-success"></i>
+                                <h2>
+                                    **** **** **** 1060
+                                </h2>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <small>
+                                            <strong>Expiry date:</strong> 10/16
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <small>
+                                            <strong>Name:</strong> <span th:text="${user.name}"></span>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            Update Debit Card
+                        </div>
+                        <div class="ibox-content">
+
+                            <div class="panel-group payments-method" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="pull-right">
+                                            <i class="fa fa-cc-visa text-success"></i>
+                                        </div>
+                                        <h5 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Debit
+                                                Card</a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <form role="form" id="payment-form">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="form-group">
+                                                                    <label>CARD NUMBER</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control"
+                                                                               name="Number"
+                                                                               placeholder="Valid Card Number"
+                                                                               />
+                                                                        <span class="input-group-addon"><i
+                                                                                class="fa fa-credit-card"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-7 col-md-7">
+                                                                <div class="form-group">
+                                                                    <label>EXPIRATION DATE</label>
+                                                                    <input type="text" class="form-control"
+                                                                           name="Expiry" placeholder="MM / YY"
+                                                                           />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-5 col-md-5 pull-right">
+                                                                <div class="form-group">
+                                                                    <label>CV CODE</label>
+                                                                    <input type="text" class="form-control" name="CVC"
+                                                                           placeholder="CVC" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="form-group">
+                                                                    <label>NAME OF CARD</label>
+                                                                    <input type="text" class="form-control"
+                                                                           name="nameCard"
+                                                                           placeholder="NAME" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <button class="btn btn-primary" type="submit">Save
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="common/base :: foot"></div>
+
+    </div>
+</div>
+
+
+<div th:replace="common/base :: jslinks"></div>
+
+</body>
+
+</html>
+
+

@@ -30,9 +30,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     };
 
     private static final String[] OWNER_MATCHERS = {
+            "/owner/**"
     };
 
     private static final String[] EMPLOYEE_MATCHERS = {
+            "/employee/**"
     };
 
 
