@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -23,6 +25,12 @@ public class UserService {
 
     public AppUser findByUsername(String username) {
         return userRepository.findUserByUsername(username);
+    }
+
+    public Set<AppUser> findEmployees(){
+        HashSet<Role> hash = new HashSet<>();
+        hash.add(roleRepository.findByRole("EMPLOYEE"));
+        return userRepository.findAppUsersByRoles(hash);
     }
 
     public void saveNewOwner(AppUser user) {

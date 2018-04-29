@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Creddit Goggles </title>
+    <title>Get Here </title>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"/>
@@ -26,8 +26,7 @@
                         <div sec:authorize="hasAnyAuthority('OWNER', 'EMPLOYEE')">
                             <span class="clear">
                                 <span class="block m-t-xs"> <strong
-                                        class="font-bold" th:text="${user.firstName}"></strong>
-                                    <strong th:text="${user.lastName}"></strong>
+                                        class="font-bold" th:text="${user.name}"></strong>
                                 </span>
                             </span>
                         </div>
@@ -38,7 +37,7 @@
                                 </span>
                             </span>
                         </div>
-                        <div sec:authorize="hasAnyAuthority('EMPLOYER')">
+                        <div sec:authorize="hasAnyAuthority('EMPLOYEE')">
                             <span class="clear">
                                 <span class="block m-t-xs"> <strong
                                         class="font-bold">You are EMPLOYEE</strong>
@@ -69,14 +68,19 @@
                 </div>
             </li>
             <li>
-                <a th:href="@{/}"><i class="fa fa-desktop"></i> <span class="nav-label">Main</span></a>
+                <a th:href="@{/}"><i class="fa fa-desktop"></i> <span class="nav-label">Home</span></a>
             </li>
-            <li sec:authorize="hasAnyAuthority('OWNER', EMPLOYEE)">
-                <a th:href="@{/profile/detail}"><i class="fa fa-th-large"></i> <span
-                        class="nav-label">Profile</span></a>
+            <li sec:authorize="hasAnyAuthority('OWNER')">
+                <a th:href="@{/owner/calendar}"><i class="fa fa-th-large"></i> <span
+                        class="nav-label">Schedule</span></a>
             </li>
-            <li sec:authorize="hasAnyAuthority('USER')">
-                <a th:href="@{/spending/list}"><i class="fa fa-table"></i> <span class="nav-label">Spending</span></a>
+            <li>
+                <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Payment</span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="#">Send</a></li>
+                    <li><a href="#">History</a></li>
+                </ul>
             </li>
         </ul>
 

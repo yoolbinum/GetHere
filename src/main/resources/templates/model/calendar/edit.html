@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Get Here</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet"/>
+
+    <link href="/css/plugins/fullcalendar/fullcalendar.css" rel="stylesheet"/>
+    <link href="/css/plugins/fullcalendar/fullcalendar.print.css" rel='stylesheet' media='print'/>
+
+    <link href="/css/animate.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="wrapper">
+
+    <nav th:replace="common/base :: topNavbar"></nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div th:replace="common/base :: navBar"></div>
+
+
+        <div class="wrapper wrapper-content">
+            <div class="row animated fadeInDown">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Employees List</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div id='external-events'>
+                                <p>Drag an employee to schedule.</p>
+                                <div th:each="employee : ${employees}">
+                                    <div class='external-event navy-bg' th:text="${employee.name}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Striped Table </h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="common/base :: foot"></div>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/plugins/fullcalendar/moment.min.js"></script>
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        /* initialize the external events
+         -----------------------------------------------------------------*/
+
+
+        $('#external-events div.external-event').each(function () {
+
+            // store data so the calendar knows to render an event upon drop
+            $(this).data('event', {
+                title: $.trim($(this).text()), // use the element's text as the event title
+                stick: true // maintain when user navigates (see docs on the renderEvent method)
+            });
+
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+                zIndex: 1111999,
+                revert: true,      // will cause the event to go back to its
+                revertDuration: 0  //  original position after the drag
+            });
+
+        });
+
+
+        /* initialize the calendar
+         -----------------------------------------------------------------*/
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: true,
+            droppable: true, // this allows things to be dropped onto the calendar
+            drop: function () {
+                // is the "remove after drop" checkbox checked?
+                if ($('#drop-remove').is(':checked')) {
+                    // if so, remove the element from the "Draggable Events" list
+                    $(this).remove();
+                }
+            },
+            events: [
+                {
+                    title: 'Harry Potter',
+                    start: new Date(y, m, d-2, 8, 0),
+                    end: new Date(y, m, d-2, 12, 0),
+                },
+                {
+                    title: 'Jon Snow',
+                    start: new Date(y, m, d-2, 12, 0),
+                    end: new Date(y, m, d-2, 15, 0),
+                },
+                {
+                    title: 'Hello World',
+                    start: new Date(y, m, d-2, 15, 0),
+                    end: new Date(y, m, d-2, 18, 0),
+                },
+                {
+                    title: 'Harry Potter',
+                    start: new Date(y, m, d-1, 8, 0),
+                    end: new Date(y, m, d-1, 12, 0),
+                },
+                {
+                    title: 'Jon Snow',
+                    start: new Date(y, m, d-1, 12, 0),
+                    end: new Date(y, m, d-1, 15, 0),
+                },
+                {
+                    title: 'Hello World',
+                    start: new Date(y, m, d-1, 15, 0),
+                    end: new Date(y, m, d-1, 18, 0),
+                },
+                {
+                    title: 'Harry Potter',
+                    start: new Date(y, m, d, 8, 0),
+                    end: new Date(y, m, d, 12, 0),
+                },
+                {
+                    title: 'Jon Snow',
+                    start: new Date(y, m, d, 12, 0),
+                    end: new Date(y, m, d, 15, 0),
+                },
+                {
+                    title: 'Hello World',
+                    start: new Date(y, m, d, 15, 0),
+                    end: new Date(y, m, d, 18, 0),
+                },
+            ]
+        });
+
+
+    });
+</script>
+</html>
+

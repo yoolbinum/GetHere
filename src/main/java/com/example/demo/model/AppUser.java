@@ -14,9 +14,7 @@ public class AppUser {
 
     private String username;
 
-    private String firstName;
-
-    private String lastName;
+    private String name;
 
     private String email;
 
@@ -54,21 +52,12 @@ public class AppUser {
         this.username = username;
     }
 
-
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<Role> getRoles() {

@@ -28,13 +28,32 @@ public class DataLoader implements CommandLineRunner {
         employeeRole.setRole("EMPLOYEE");
         roleRepository.save(employeeRole);
 
-        AppUser appUser = new AppUser();
-        appUser.setFirstName("Harry");
-        appUser.setLastName("Potter");
-        appUser.setPassword("admin");
-        appUser.setUsername("admin");
-        appUser.addRole(ownerRole);
-        userService.addRole(appUser, "OWNER");
-        userService.saveNewOwner(appUser);
+        AppUser owner = new AppUser();
+        owner.setName("Harry Potter");
+        owner.setPassword("admin");
+        owner.setUsername("admin");
+        owner.addRole(ownerRole);
+        userService.saveNewOwner(owner);
+
+        AppUser employee = new AppUser();
+        employee.setName("Rob Stark");
+        employee.setPassword("rob");
+        employee.setUsername("rob");
+        employee.addRole(employeeRole);
+        userService.saveNewEmployee(employee);
+
+        AppUser employee2 = new AppUser();
+        employee2.setName("Hello World");
+        employee2.setPassword("hello");
+        employee2.setUsername("hello");
+        employee2.addRole(employeeRole);
+        userService.saveNewEmployee(employee2);
+
+        AppUser employee3 = new AppUser();
+        employee3.setName("Jon Snow");
+        employee3.setPassword("jon");
+        employee3.setUsername("jon");
+        employee3.addRole(employeeRole);
+        userService.saveNewEmployee(employee3);
     }
 }
